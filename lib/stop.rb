@@ -1,6 +1,7 @@
 require 'active_record'
 require_relative '../db/connection.rb'
 
-class User < ActiveRecord::Base
-	has_secure_password
+class Stop < ActiveRecord::Base
+	belongs_to :bar
+	belongs_to :trip
 end
