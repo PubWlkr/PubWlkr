@@ -20,13 +20,13 @@
 	{{#trips}}
 	<!-- We need to add name and map_url columns in trips table, and define trips array and user_id in server -->
 		<div>
+			<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
 			<iframe
-  			width="600"
-  			height="450"
+  			width="200"
+  			height="200"
   			frameborder="0" style="border:0"
   			src="{{map_url}}">
 			</iframe>
-			<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
 			<h3>{{user_rating}}</h3>
 			<form method="POST" action="/user/{{user_id}}/trips/{{id}}/edit">
 				<input type="hidden" name="_method" value="PUT">
