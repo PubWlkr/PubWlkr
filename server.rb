@@ -20,7 +20,6 @@ get '/' do
 end
 
 get '/session' do
-	binding.pry
 	session.destroy
 	redirect "/"
 end
