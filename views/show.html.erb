@@ -17,7 +17,7 @@
 	
 	<h2>Your PubWlks</h2>
 
-	<% @trips.each do |trip| %>
+	{{#trips}}
 	<!-- We need to add name and map_url columns in trips table -->
 		<div>
 			<iframe
@@ -26,18 +26,18 @@
   			frameborder="0" style="border:0"
   			src="<%= trip.map_url %>">
 			</iframe>
-			<h2><%= trip.name %></h2>
-			<h3><%= trip.user_rating %></h3>
-			<form method="POST" action="/user/<%= @user.id %>/trips/<%= trip.id %>/edit">
+			<h2>{{name}}</h2>
+			<h3>{{user_rating}}</h3>
+			<form method="POST" action="/user/{{user}}/trips/{{id}}/edit">
 				<input type="hidden" name="_method" value="PUT">
 				<button>Completed PubWlk</button>
 			</form>
-			<form method="POST" action"/user/<%= @user.id %>/trips/<%= trip.id %>">
+			<form method="POST" action"/user/{{user}}/trips/{{id}}">
 				<input type="hidden" name="_method" value="DELETE">
 				<button>Delete PubWlk</button>
 			</form>
 		</div>
-	<% end %>
+	{{/trips}}
 
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
