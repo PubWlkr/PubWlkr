@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>pubwlkr</title>
+</head>
+<body>
+
+	<header>
+		<h1>PubWlkr</h1>
+		<nav>
+			<a href="/trips">All PubWlks</a> |
+			<a href="/users/{{user_id}}/trips/new">New PubWlk</a> |
+			<a href="/session">Log Out</a> 
+		</nav>
+	</header>
+
+	<h2>Create a New PubWlk</h2>
+
+	<form>
+		<input name="start" placeholder="Enter your starting location">
+	</form>
+
+	<form>
+		<input name="end" placeholder="Enter your destination">
+	</form>
+
+	<form>
+		<label>Number of Stops: 
+		<select name="number-stops">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+			<option>8</option>
+			<option>9</option>
+			<option>10</option>
+		</select>
+		</label>
+	</form>
+
+	<button id="generate">Generate PubWlk!</button>
+
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="javascripts/main.js"></script>
+</body>
+</html>

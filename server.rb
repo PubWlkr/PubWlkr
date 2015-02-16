@@ -55,6 +55,11 @@ end
 delete '/users/:user_id/trips/:id' do
 end
 
+# USERS EDIT A TRIP COMPLETED BOOLEAN
+put '/users/:user_id/trips/:id/edit' do
+
+end
+
 
 
 # /api_calls : SEARCH FOR ADDRESS
