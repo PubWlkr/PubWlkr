@@ -1,0 +1,67 @@
+<html>
+<head>
+	<title>pubwlkr</title>
+</head>
+<body>
+
+	<header>
+		<h1>PubWlkr</h1>
+		<nav>
+			<a href="/trips">All PubWlks</a> |
+			<a href="/users/{{user_id}}/trips/new">New PubWlk</a> |
+			<a href="/session">Log Out</a> 
+		</nav>
+	</header>
+
+	<hr>
+	{{#trip}}
+	<h2>{{name}}</h2>
+
+	<form method="POST" action="/user/{{user_id}}/trips/{{id}}/edit">
+		<input type="hidden" name="_method" value="PUT">
+		<button>Completed PubWlk</button>
+	</form>
+
+	<form method="POST" action"/user/{{user_id}}/trips/{{id}}">
+		<input type="hidden" name="_method" value="DELETE">
+		<button>Delete PubWlk</button>
+	</form>
+
+	<div>
+		<iframe
+  		width="600"
+  		height="450"
+  		frameborder="0" style="border:0"
+  		src="{{map_url}}">
+		</iframe>
+	</div>
+	{{/trip}}
+
+	<h3>Drag and drop bars to change the order of the PubWlk, or add and delete bars at your whim!</h3>
+
+	<!-- icon/link with event listener to add a new bar -->
+	<button id="addBar">Add a Bar</button>
+
+	{{#bars}}
+		<div>
+			<img src="{{pic_url}}">
+			<h2>{{name}}</h2>
+			<ul>
+				<li>{{address}}</li>
+				<li>{{website}}</li>
+				<li>{{price_range}}</li>
+				<li>{{rating}}</li>
+			</ul>
+			<button id="{{id}}">Remove Bar</button>
+		</div>
+	{{/bars}}
+
+	<button id="regenerate">Regenerate!</button>
+	<button id="create">Save PubWlk</button>
+	<button id="trash">Trash</button>
+
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="javascripts/main.js"></script>
+</body>
+</html>
