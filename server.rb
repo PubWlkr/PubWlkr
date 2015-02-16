@@ -37,6 +37,8 @@ end
 
 # CREATE USER AND PERSIST IN DATABASE
 post '/users' do
+	User.create({f_name: params["f_name"], l_name: params["l_name"], email: params["email"], password: params["password"]})
+	redirect "/"
 end
 
 # UPDATE USER INFORMATION
