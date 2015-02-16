@@ -23,7 +23,7 @@ CREATE TABLE bars(
 	website text,
 	pic_url text,
 	rating integer,
-	price_level integer,
+	price_level numeric,
 	place_id text
 );
 
