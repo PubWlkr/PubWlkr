@@ -1,4 +1,9 @@
-
+require "active_record"
+require_relative "connection.rb"
+require_relative '../lib/trip.rb'
+require_relative '../lib/user.rb'
+require_relative '../lib/bar.rb'
+require_relative '../lib/stop.rb'
 
 User.create({f_name: "Gretchen", l_name: "Ziegler", email: "gretchenziegler@gmail.com", password: "password"})
 
