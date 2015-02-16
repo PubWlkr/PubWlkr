@@ -8,7 +8,7 @@
 		<h1>PubWlkr</h1>
 		<nav>
 			<a href="/trips">All PubWlks</a> |
-			<a href="/users/<%= @user.id %>/trips/new">New PubWlk</a> |
+			<a href="/users/{{user_id}}/trips/new">New PubWlk</a> |
 			<a href="/session">Log Out</a> 
 		</nav>
 	</header>
@@ -26,7 +26,7 @@
   			frameborder="0" style="border:0"
   			src="{{map_url}}">
 			</iframe>
-			<h2>{{name}}</h2>
+			<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
 			<h3>{{user_rating}}</h3>
 			<form method="POST" action="/user/{{user_id}}/trips/{{id}}/edit">
 				<input type="hidden" name="_method" value="PUT">
