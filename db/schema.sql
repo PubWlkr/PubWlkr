@@ -23,7 +23,7 @@ CREATE TABLE bars(
 	website text,
 	pic_url text,
 	rating integer,
-	price_range integer,
+	price_level integer,
 	place_id text
 );
 
@@ -31,5 +31,6 @@ CREATE TABLE stops(
 	id serial primary key,
 	bar_id integer,
 	trip_id integer,
-	completed boolean
+	completed boolean,
+	stop_number integer
 );
