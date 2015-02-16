@@ -37,11 +37,6 @@
 	</div>
 	{{/trip}}
 
-	<h3>Drag and drop bars to change the order of the PubWlk, or add and delete bars at your whim!</h3>
-
-	<!-- icon/link with event listener to add a new bar -->
-	<button id="addBar">Add a Bar</button>
-
 	{{#bars}}
 		<div>
 			<img src="{{pic_url}}">
@@ -49,21 +44,14 @@
 			<ul>
 				<li>{{address}}</li>
 				<li>{{website}}</li>
-				<li>{{price_range}}</li>
-				<li>{{rating}}</li>
+				<li>Price Level: {{price_level}}</li>
+				<li>Average Rating: {{rating}}</li>
 			</ul>
-			<button id="{{id}}">Remove Bar</button>
 		</div>
 	{{/bars}}
 
-	<br><br>
-
-	<button id="regenerate">Regenerate!</button>
-	<button id="create">Save PubWlk</button>
-	<button id="trash">Trash</button>
-
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript" src="javascripts/main.js"></script>
+	<script type="text/javascript" src="../javascripts/main.js"></script>
 </body>
 </html>
