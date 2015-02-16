@@ -11,7 +11,9 @@ CREATE TABLE trips(
 	user_id integer,
 	user_rating integer,
 	completed boolean,
-	time_created timestamp
+	time_created timestamp,
+	name varchar(255),
+	map_url text
 );
 
 CREATE TABLE bars(
@@ -21,7 +23,8 @@ CREATE TABLE bars(
 	website text,
 	pic_url text,
 	rating integer,
-	price_range integer
+	price_range integer,
+	place_id text
 );
 
 CREATE TABLE stops(
