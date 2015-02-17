@@ -134,6 +134,9 @@ end
 
 # GET WEBSITE AND MAYBE OTHER DETAILS
 get '/details_search/:place_id' do
+	place_id = params[:place_id]
+	response = HTTParty.get("https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=AIzaSyDKBnu8JwKe6sSLCuT6RK5PiCGUQbmbm_Q")
+	json_response = JSON.generate(response)
 end
 
 
@@ -142,8 +145,9 @@ end
 # GET ALL TRIPS FROM DATABASE
 get '/trips' do
 	if session[:user_id]
+		user_id = User.find(session[:user_id]).id
 		trips = Trip.all.to_a
-		Mustache.render(File.read("./views/trips/trips_index.html"), trips: trips, user_id: params[:session_id])
+		Mustache.render(File.read("./views/trips/trips_index.html"), trips: trips, user_id: user_id)
 	else
 		redirect "/"
 	end
