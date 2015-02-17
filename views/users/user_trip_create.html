@@ -16,16 +16,16 @@
 	<h2>Create a New PubWlk</h2>
 
 	<form>
-		<input name="start" placeholder="Enter your starting location">
+		<input id="name" placeholder="Give your PubWlk a name">
 	</form>
 
 	<form>
-		<input name="end" placeholder="Enter your destination">
+		<input id="start" placeholder="Enter your starting location">
 	</form>
 
 	<form>
 		<label>Number of Stops: 
-		<select name="number-stops">
+		<select id="number-stops">
 			<option>1</option>
 			<option>2</option>
 			<option>3</option>
@@ -40,10 +40,28 @@
 		</label>
 	</form>
 
+	<form>
+		<label>Define Search Radius (in miles): 
+			<select id="radius">
+				<option>.25</option>
+				<option>.50</option>
+				<option>.75</option>
+				<option>1</option>
+				<option>1.25</option>
+				<option>1.5</option>
+				<option>1.75</option>
+				<option>2</option>
+			</select>
+		</label>
+	</form>
+
 	<button id="generate">Generate PubWlk!</button>
+
+	<!-- LIBRARIES -->
 
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript" src="../javascripts/main.js"></script>
+	<script type="text/javascript" src="/javascripts/create_walk.js"></script>
+
 </body>
 </html>

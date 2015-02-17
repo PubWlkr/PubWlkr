@@ -3,6 +3,8 @@ require 'sinatra/reloader'
 require 'pry'
 require 'active_record'
 require 'mustache'
+require 'json'
+require 'httparty'
 require_relative "./db/connection.rb"
 require_relative './lib/trip.rb'
 require_relative './lib/user.rb'
@@ -19,6 +21,7 @@ get '/' do
 	File.read("./views/index.html")
 end
 
+# DESTROY SESSION
 get '/session' do
 	session.destroy
 	redirect "/"
@@ -41,13 +44,13 @@ post '/users' do
 	redirect "/"
 end
 
-# UPDATE USER INFORMATION
+# UPDATE USER INFORMATION (INCOMPLETE)
 put '/users/:id' do
 	user = User.find(params[:id])
 	authorize_user(user)
 end
 
-# DELETE USER
+# DELETE USER (INCOMPLETE)
 delete '/users/:id' do
 	user = User.find(params[:id])
 	authorize_user(user)
@@ -114,10 +117,19 @@ end
 # /api_calls : SEARCH FOR ADDRESS
 # GET LAT LONG AS GEOCODE CALL
 get '/address_search/:address' do
+	address = params[:address]
+	url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=AIzaSyDKBnu8JwKe6sSLCuT6RK5PiCGUQbmbm_Q"
+	response = HTTParty.get(url)
+	json_response = JSON.generate(response)
 end
 
 # GET PLACES FROM GOOGLE PLACES API
-get '/places_search/:lat_long' do
+get '/places_search/:lat/:lng/:radius' do
+	lat = params[:lat]
+	lng = params[:lng]
+	radius = params[:radius]
+	response = HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lng}&radius=#{radius}&types=bar&key=AIzaSyDKBnu8JwKe6sSLCuT6RK5PiCGUQbmbm_Q")
+	json_response = JSON.generate(response)
 end
 
 # GET WEBSITE AND MAYBE OTHER DETAILS
