@@ -4,6 +4,7 @@ var $genButton = $('#generate')
 var allDemBars;
 var address_array = []
 var $iframe;
+var map_url;
 // generate new PubWlk on click of generate button
 $genButton.on('click', function(){
 	var address = $("#start").val();
@@ -71,7 +72,7 @@ function showTrip(bars) {
 		$("#container").prepend($title);	
 	}, 1000)
 	
-	buttonCreate();
+	buttonCreate(bars, walkName);
 }
 
 
@@ -87,7 +88,7 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 		var origin = mapStrings.shift();
 		var destination = mapStrings.pop()
 		var waypoints = mapStrings.join("|")
-		var map_url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyDKBnu8JwKe6sSLCuT6RK5PiCGUQbmbm_Q&origin=" + origin + "&destination=" + destination + "&waypoints=" + waypoints
+		map_url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyDKBnu8JwKe6sSLCuT6RK5PiCGUQbmbm_Q&origin=" + origin + "&destination=" + destination + "&waypoints=" + waypoints
 
     $iframe = $("<iframe width=400 height=400 frameborder='0' style='border:0' src='" + map_url + "'></iframe>")
 
@@ -95,14 +96,14 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 		// append all the bars
 		var parsedData = JSON.parse(data);
 		var website = parsedData.result.website;
-		var barDiv = $("<div><h2>Name: " + name + "</h2><img width=100 height=100 src=" + pic_url + "><ul><li>" + address + "</li><li><a href='" + website + "'>" + website + "</a></li><li>Price Level: " + price_level + "</li><li>Average Rating: " + rating + "</li></ul></div>");
+		var barDiv = $("<div id ='" + place_id + "'><h2>Name: " + name + "</h2><img width=100 height=100 src=" + pic_url + "><ul><li>" + address + "</li><li><a href='" + website + "'>" + website + "</a></li><li>Price Level: " + price_level + "</li><li>Average Rating: " + rating + "</li></ul></div>");
 
 		$("#container").append(barDiv);
 	})
 
 }
 
-function buttonCreate(){
+function buttonCreate(bars, walkName){
 	var $regenButton = $("<button>Regenerate PubWlk</button>")
 	var $trashButton = $("<button>Trash</button>")
 	var $confirmButton = $("<button>Confirm PubWlk</button>")
@@ -115,9 +116,9 @@ function buttonCreate(){
 		window.location.reload();
 	})
 
-	// $confirmButton.on('click', function(){
-
-	// })
+	$confirmButton.on('click', function(){
+		createTrip(bars, walkName);
+	})
 
 	$("#container").append($regenButton);
 	$("#container").append($trashButton);
@@ -128,9 +129,40 @@ function buttonCreate(){
 
 // create trip, bars, and stops; persist to database
 
-// function createTrip(bars){
+function createTrip(bars, walkName){
 
-// }
+	//create trip data
+	var time = new Date();
+	var tripData = {user_rating: null, completed: false, time_created: time, name: walkName, map_url: map_url}
+
+	//create bars data
+	var barsData = []
+	var $barDivs = $('div')
+	
+	for (var i = 1; i < bars.length + 1; i++){
+		var name = $barDivs[i].children[0].innerText.replace(/Name: /, "")
+		var address = $barDivs[i].children[2].children[0].innerText
+		var website = $barDivs[i].children[2].children[1].innerText
+		var pic_url = $barDivs[i].children[1].src
+		var rating = $barDivs[i].children[2].children[3].innerText.replace(/Average Rating: /, "")
+		var price_level = $barDivs[i].children[2].children[2].innerText.replace(/Price Level: /, "")
+		var place_id = $barDivs[i].id
+		var oneBar = {name: name, address: address, website: website, pic_url: pic_url, rating: rating, price_level: price_level, place_id: place_id}
+		barsData.push(oneBar);
+	}
+
+	//ajax call with all data
+	
+
+	// create stops data in done function
+
+	var stopsData = []
+
+	for (var i = 0; i < bars.length; i++){
+
+	}
+
+}
 
 
 

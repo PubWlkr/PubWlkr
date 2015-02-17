@@ -97,6 +97,10 @@ end
 post '/users/:id/trips' do
 	user = User.find(params[:id])
 	authorize_user(user)
+	user_id = user.id
+	# attrs = JSON.parse(request.body.read)
+	# movie = Movie.create(attrs)
+	# movie.to_json
 end
 
 # USERS DELETE A TRIP
