@@ -10,15 +10,22 @@ longitude = response["results"][0]["geometry"]["location"]["lng"]
 
 **places API call (to get list of nearby bars by lat/long):**
 
-response = HTTParty.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat,long}&radius=#{radius_in_meters}&types=bar&key=AIzaSyDKBnu8JwKe6sSLCuT6RK5PiCGUQbmbm_Q')
+bars = HTTParty.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},{long}&radius=#{radius_in_meters}&types=bar&key=AIzaSyDKBnu8JwKe6sSLCuT6RK5PiCGUQbmbm_Q')
 
-bars are in response["results"] array
-
-results = response["results"]                                                                                 
+results = bars["results"]                      
 addresses => results[index]["vicinity"]
-names => results[index]["name"]                                                                            
-[23] Pry(main)* end   
+names => results[index]["name"] 
 
+place_ids => results[index]["place_id"]
+
+price_level => results[index]["price_level"]
+
+rating => results[index]["rating"]
+
+photo ref => results[index]["photos"][0]["photo_reference"]
+
+results.take(number_of_stops)
+  
 **places API details call (to get website and additional details):**
 
 response = HTTParty.get('https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=AIzaSyDKBnu8JwKe6sSLCuT6RK5PiCGUQbmbm_Q')
