@@ -94,13 +94,24 @@ get '/users/:user_id/trips/:id/edit' do
 end
 
 # CREATE NEW TRIP AND PERSIST IN DATABASE
-post '/users/:id/trips' do
-	user = User.find(params[:id])
+post '/trips' do
+	user = User.find(session[:user_id])
 	authorize_user(user)
 	user_id = user.id
-	# attrs = JSON.parse(request.body.read)
-	# movie = Movie.create(attrs)
-	# movie.to_json
+	attrs = JSON.parse(request.body.read)
+
+	attrs[0]["user_id"] = user_id
+	trip_attrs = attrs[0]
+	trip = Trip.create(trip_attrs)
+	trip_id = trip.id
+
+	attrs[1].each do |bar|
+		new_bar = Bar.create(bar)
+		bar_id = new_bar.id
+		Stop.create({bar_id: bar_id, trip_id: trip_id, completed: false, stop_number: attrs[1].index(bar)})
+	end
+
+	trip.to_json
 end
 
 # USERS DELETE A TRIP

@@ -119,10 +119,11 @@ function buttonCreate(bars, walkName){
 	$confirmButton.on('click', function(){
 		createTrip(bars, walkName);
 	})
-
-	$("#container").append($regenButton);
-	$("#container").append($trashButton);
-	$("#container").append($confirmButton);
+setTimeout(function () {
+	$("#container").prepend($regenButton);
+	$("#container").prepend($trashButton);
+	$("#container").prepend($confirmButton);
+}, 1000)
 
 }
 
@@ -151,17 +152,18 @@ function createTrip(bars, walkName){
 		barsData.push(oneBar);
 	}
 
-	//ajax call with all data
+	var dbData = JSON.stringify([tripData, barsData])
 	
-
-	// create stops data in done function
-
-	var stopsData = []
-
-	for (var i = 0; i < bars.length; i++){
-
-	}
-
+	//ajax call with all data
+	$.ajax({	
+		url: '/trips',
+		type: 'POST',
+		data: dbData
+	}).done(function (data){
+		var parsedData = JSON.parse(data);
+		alert(parsedData.name + " has been made!");
+		$('button').remove();
+	})
 }
 
 
