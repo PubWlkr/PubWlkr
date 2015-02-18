@@ -21,7 +21,7 @@
 	<form>
 		<label>Completed?
 			<input type="hidden" id="ids" value="{{user_id}} {{id}}">
-			<input id="checkbox" type="checkbox">
+			<input id="checkbox" type="checkbox" checked="{{completed}}">
 		</label>
 	</form>
 
@@ -30,6 +30,7 @@
 		<button>Delete PubWlk</button>
 	</form>
 
+	<p>Current Rating: {{user_rating}}</p>
 	<form>
 	<select name="rating">Rating: 
 		<option>1</option>
