@@ -68,11 +68,11 @@ function showTrip(bars) {
 
 		domLoad(name, pic_url, address, price_level, rating, place_id)
 	}
-	// grab the name of the walk
 	
-	debugger
-	walkName = $('#name').val();
-
+	// grab the name of the walk
+	if ($('#name').val() != undefined){
+		walkName = $('#name').val();
+	}
 
 	var $title = $("<h1>" + walkName + "</h1>")
 	// empty the container div
@@ -190,3 +190,4 @@ function regenTrip(){
 
 
 
+	
