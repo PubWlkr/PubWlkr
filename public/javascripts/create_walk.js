@@ -1,14 +1,21 @@
 console.log("connected!")
 
+// globals
 var $genButton = $('#generate')
 var allDemBars;
 var address_array = []
 var $iframe;
 var map_url;
+var number_stops;
+var stop_counter = 0;
+var walkName;
+
 // generate new PubWlk on click of generate button
 $genButton.on('click', function(){
+
 	var address = $("#start").val();
-	var number_stops = $("#number_stops").val();
+	number_stops = $("#number_stops").val();
+	stop_counter = parseInt(number_stops);
 	var radius = (parseFloat($("#radius_input").val()) * 1609.34)
 	geocode(address, number_stops, radius);
 })
@@ -41,7 +48,7 @@ function barSearch(lat, lng, radius, number_stops){
 
 // show trip, bars, and stops (confirmation page)
 function showTrip(bars) {
-	
+	address_array = []
 	
 	for (var i = 0; i < bars.length; i++) {
 
@@ -62,7 +69,11 @@ function showTrip(bars) {
 		domLoad(name, pic_url, address, price_level, rating, place_id)
 	}
 	// grab the name of the walk
-	var walkName = $('#name').val();
+	
+	debugger
+	walkName = $('#name').val();
+
+
 	var $title = $("<h1>" + walkName + "</h1>")
 	// empty the container div
 	$("#container").empty()
@@ -119,11 +130,16 @@ function buttonCreate(bars, walkName){
 	$confirmButton.on('click', function(){
 		createTrip(bars, walkName);
 	})
-setTimeout(function () {
-	$("#container").prepend($regenButton);
-	$("#container").prepend($trashButton);
-	$("#container").prepend($confirmButton);
-}, 1000)
+
+	$regenButton.on("click", function () {
+		regenTrip();
+	})
+
+	setTimeout(function () {
+		$("#container").prepend($regenButton);
+		$("#container").prepend($trashButton);
+		$("#container").prepend($confirmButton);
+	}, 1000)
 
 }
 
@@ -132,11 +148,11 @@ setTimeout(function () {
 
 function createTrip(bars, walkName){
 
-	//create trip data
+	// create trip data
 	var time = new Date();
 	var tripData = {user_rating: null, completed: false, time_created: time, name: walkName, map_url: map_url}
 
-	//create bars data
+	// create bars data
 	var barsData = []
 	var $barDivs = $('div')
 	
@@ -154,7 +170,7 @@ function createTrip(bars, walkName){
 
 	var dbData = JSON.stringify([tripData, barsData])
 	
-	//ajax call with all data
+	// ajax call with all data
 	$.ajax({	
 		url: '/trips',
 		type: 'POST',
@@ -164,6 +180,12 @@ function createTrip(bars, walkName){
 		alert(parsedData.name + " has been made!");
 		document.location.href = "/users/" + parsedData.user_id + "/trips/" + parsedData.id;
 	})
+}
+
+function regenTrip(){
+	var new_bar_set = allDemBars.results.slice(stop_counter, (parseInt(number_stops) + stop_counter));
+	stop_counter += parseInt(number_stops);
+	showTrip(new_bar_set);
 }
 
 
