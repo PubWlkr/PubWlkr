@@ -8,6 +8,7 @@
 		<h1>PubWlkr</h1>
 		<nav>
 			<a href="/trips">All PubWlks</a> |
+			<a href ="/users/{{user_id}}">My PubWlks</a> |
 			<a href="/users/{{user_id}}/trips/new">New PubWlk</a> |
 			<a href="/session">Log Out</a> 
 		</nav>
@@ -17,14 +18,27 @@
 	{{#trip}}
 	<h2>{{name}}</h2>
 
-	<form method="POST" action="/user/{{user_id}}/trips/{{id}}/edit">
-		<input type="hidden" name="_method" value="PUT">
-		<button>Completed PubWlk</button>
+	<form>
+		<label>Completed?
+			<input type="hidden" id="ids" value="{{user_id}} {{id}}">
+			<input id="checkbox" type="checkbox">
+		</label>
 	</form>
 
-	<form method="POST" action"/user/{{user_id}}/trips/{{id}}">
+	<form method="POST" action="/trips/{{id}}">
 		<input type="hidden" name="_method" value="DELETE">
 		<button>Delete PubWlk</button>
+	</form>
+
+	<form>
+	<select name="rating">Rating: 
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+	</select>
+	<button id="rate">Rate PubWlk!</button> 
 	</form>
 
 	<div>
@@ -36,7 +50,7 @@
 		</iframe>
 	</div>
 	{{/trip}}
-
+	<br><br>
 	{{#bars}}
 		<div>
 			<img src="{{pic_url}}">
@@ -52,6 +66,6 @@
 
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript" src="../javascripts/main.js"></script>
+	<script type="text/javascript" src="/javascripts/edit_walk.js"></script>
 </body>
 </html>
