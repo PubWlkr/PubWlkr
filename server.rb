@@ -124,14 +124,12 @@ end
 
 # USERS EDIT A TRIP COMPLETED BOOLEAN
 put '/users/:user_id/trips/:id' do
-	
 	user = User.find(params[:user_id])
 	authorize_user(user)
 	trip = Trip.find(params[:id])
 
 	attrs = JSON.parse(request.body.read)
-
-	if attrs["completed"]
+	if attrs["completed"] != nil
 		completed = attrs["completed"]
 		trip.completed = completed
 		trip.save
