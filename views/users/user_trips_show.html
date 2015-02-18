@@ -8,6 +8,7 @@
 		<h1>PubWlkr</h1>
 		<nav>
 			<a href="/trips">All PubWlks</a> |
+			<a href ="/users/{{user_id}}">My PubWlks</a> |
 			<a href="/users/{{user_id}}/trips/new">New PubWlk</a> |
 			<a href="/session">Log Out</a> 
 		</nav>
@@ -15,10 +16,9 @@
 
 	<hr>
 	
-	<h2>Your PubWlks</h2>
+	<h2>My PubWlks</h2>
 
 	{{#trips}}
-	<!-- We need to add name and map_url columns in trips table, and define trips array and user_id in server -->
 		<div>
 			<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
 			<iframe
@@ -32,7 +32,7 @@
 				<input type="hidden" name="_method" value="PUT">
 				<button>Completed PubWlk</button>
 			</form>
-			<form method="POST" action"/user/{{user_id}}/trips/{{id}}">
+			<form method="POST" action="/trips/{{id}}">
 				<input type="hidden" name="_method" value="DELETE">
 				<button>Delete PubWlk</button>
 			</form>

@@ -115,16 +115,33 @@ post '/trips' do
 end
 
 # USERS DELETE A TRIP
-delete '/users/:user_id/trips/:id' do
-	user = User.find(params[:user_id])
-	authorize_user(user)
+delete '/trips/:id' do
+	trip = Trip.find(params[:id])
+	trip.destroy
+
+	redirect "/users/#{session[:user_id]}"
 end
 
 # USERS EDIT A TRIP COMPLETED BOOLEAN
 put '/users/:user_id/trips/:id' do
+	
 	user = User.find(params[:user_id])
 	authorize_user(user)
+	trip = Trip.find(params[:id])
 
+	attrs = JSON.parse(request.body.read)
+
+	if attrs["completed"]
+		completed = attrs["completed"]
+		trip.completed = completed
+		trip.save
+	elsif attrs["user_rating"]
+		user_rating = attrs["user_rating"]
+		trip.user_rating = user_rating
+		trip.save
+	end
+	
+	trip.to_json
 end
 
 
