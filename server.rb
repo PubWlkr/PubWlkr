@@ -172,7 +172,8 @@ end
 get '/trips/:id' do
 	if session[:user_id]
 		trip = Trip.find(params[:id])
-		Mustache.render(File.read("./views/trips/trip_show.html"), trip: trip)
+		bars = trip.bars.to_a
+		Mustache.render(File.read("./views/trips/trip_show.html"), trip: trip, bars: bars)
 	else
 		redirect "/"
 	end
