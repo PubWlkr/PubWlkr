@@ -1,6 +1,4 @@
 require 'sinatra'
-require 'sinatra/reloader' if development?
-require 'pry' if development?
 require 'active_record'
 require 'mustache'
 require 'json'

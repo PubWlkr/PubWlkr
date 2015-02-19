@@ -8,8 +8,6 @@ gem "activerecord"
 gem "pg"
 # gem "thin"
 gem "mustache"
-gem 'json'
-gem 'httparty'
 gem 'unicorn'
 gem 'sinatra-contrib'
 gem 'sinatra-flash'
