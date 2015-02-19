@@ -7,9 +7,13 @@ h1 {
 	font-size: 3em;
 }
 
-li {
-	list-style-type: none;
+p {
+	font-size: 1.5em;
 }
+
+/*li {
+	list-style-type: none;
+}*/
 
 .visible {
   visibility: visible;
@@ -105,4 +109,49 @@ button:hover {
 	border-radius: 10px;
 	float: right;
 	width: 40%;
+}
+
+.wrap2 {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.iframe {
+	width: 50%;
+	float: left;
+}
+
+.trip-info {
+	width: 30%;
+	float: right;
+	text-align: left;
+}
+
+.wrap3 {
+	width: 30%;
+	height: 25%;
+	margin: 0 auto;
+	border: 3px solid black;
+	border-radius: 10px;
+}
+
+.bar-images {
+	width: 40%;
+	height: 95%;
+	float: left;
+}
+
+.bar-info {
+	width: 55%;
+	height: 90%;
+	float: right;
+	text-align: left;
+}
+
+.bar-photo {
+	margin-top: .5px;
+	padding: 5px;
+	width: 98%;
+	height: 98%;
+	border-radius: 10px;
 }

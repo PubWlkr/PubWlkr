@@ -21,58 +21,75 @@
 	</header>
 
 	<hr>
+
 	{{#trip}}
-	<h2>{{name}}</h2>
-<div width="800px">
-	<form>
-		<label>Completed?
-			<input type="hidden" id="ids" value="{{user_id}} {{id}}">
-			<input id="checkbox" type="checkbox" {{#completed}}checked="{{completed}}"{{/completed}}>
-		</label>
-	</form>
-
-	<p>Current Rating: {{user_rating}}</p>
-	<form>
-		<button id="rate">Rate PubWlk!</button> 
-			<select name="rating">Rating: 
-			<option>1</option>
-			<option>2</option>
-			<option>3</option>
-			<option>4</option>
-			<option>5</option>
-		</select>
-	</form>
-
-	<form method="POST" action="/trips/{{id}}">
-		<input type="hidden" name="_method" value="DELETE">
-		<button>Delete PubWlk</button>
-	</form>
-
-	<div>
-		<iframe
-  		width="600"
-  		height="450"
-  		frameborder="0" style="border:0"
-  		src="{{map_url}}">
-		</iframe>
-	</div>
-	{{/trip}}
-	<br><br>
-	{{#bars}}
-		
-		<div>
-			<img width="20%" src="{{pic_url}}">
-			<h2>{{name}}</h2>
-			<ul>
-				<li>{{address}}</li>
-				<li><a href="{{website}}" target="_blank">{{website}}</a></li>
-				<li>Price Level: {{price_level}}</li>
-				<li>Average Rating: {{rating}}</li>
-			</ul>
+	<div class="wrap2">
+		<div class="iframe">
+			<iframe
+	  		width="500"
+	  		height="350"
+	  		frameborder="0" style="border:0"
+	  		src="{{map_url}}">
+			</iframe>
 		</div>
 		
+		<div class="trip-info">
+			<h1>{{name}}</h1>
+
+			<form>
+				<p>Completed?
+					<input type="hidden" id="ids" value="{{user_id}} {{id}}">
+					<input id="checkbox" type="checkbox" {{#completed}}checked="{{completed}}"{{/completed}}>
+				</p>
+			</form>
+
+			<p>Current Rating: {{user_rating}}</p>
+			<form>
+				<button id="rate">Rate PubWlk!</button> &nbsp;
+					<select name="rating">Rating: 
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
+			</form>
+
+			<form method="POST" action="/trips/{{id}}">
+				<input type="hidden" name="_method" value="DELETE">
+				<button>Delete PubWlk</button>
+			</form>
+		</div>
+	</div>
+
+	{{/trip}}
+	
+
+	<div style="clear: both;">
+		<br><br><br><br>
+	{{#bars}}
+		
+		<div class="wrap3">
+			<div class="bar-images">
+				<img class="bar-photo" src="{{pic_url}}">
+			</div>
+			<div class="bar-info">
+				<h2>{{name}}</h2>
+				<ul>
+					<li>{{address}}</li>
+					<li><a href="{{website}}" target="_blank">{{website}}</a></li>
+					<li>Price Level: {{price_level}}</li>
+					<li>Average Rating: {{rating}}</li>
+				</ul>
+			</div>
+			<br>
+		</div>
+		<br><br>
+		
 	{{/bars}}
-</div>
+
+	</div>
+
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="/javascripts/edit_walk.js"></script>
