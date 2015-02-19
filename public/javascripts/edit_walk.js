@@ -2,14 +2,14 @@ var ids = $('#ids').val()
 var user_id = ids[0]
 var trip_id = ids[2]
 
+// Complete a trip
 $checkbox = $("#checkbox")
-
 $checkbox.on("click", function () {
-	if (document.querySelector('#checkbox').checked == true) {
-		var completed = true;
+	if ($("#checkbox").attr("checked") == undefined) {
+		completed = false;
 	}
 	else {
-		var completed = false;
+		completed = true;
 	}
 	
 	$.ajax({
@@ -21,8 +21,8 @@ $checkbox.on("click", function () {
 	})
 });
 
+// Rate a trip
 $rateButton = $("#rate")
-
 $rateButton.on("click", function () {
 	var rating = parseInt($('select').val());
 	$.ajax({
@@ -37,14 +37,14 @@ $rateButton.on("click", function () {
 // function to render parsedData to DOM
 function displayInfo(data){
 		var parsedData = JSON.parse(data);
-		alert(parsedData.name + " has been edited!");
-		debugger
+		// alert(parsedData.name + " has been edited!");
+
 		if (parsedData.completed == true){
 			$checkbox.attr('checked', true)
 		} else {
 			$checkbox.attr('checked', false)
 		}
-		// $('select').val(parsedData.user_rating.toString())
+
 		$("p").text("Current Rating: " + parsedData.user_rating);
 }
 
