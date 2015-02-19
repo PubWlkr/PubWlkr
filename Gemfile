@@ -9,3 +9,5 @@ gem "active_record"
 gem "pg"
 gem "thin"
 gem "mustache"
+gem 'json'
+gem 'httparty'
