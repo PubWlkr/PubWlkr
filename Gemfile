@@ -6,7 +6,7 @@ gem "sinatra"
 gem "bcrypt"
 gem "activerecord"
 gem "pg"
-gem "thin"
+# gem "thin"
 gem "mustache"
 gem 'json'
 gem 'httparty'
