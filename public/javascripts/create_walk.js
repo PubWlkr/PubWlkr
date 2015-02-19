@@ -18,15 +18,16 @@ var walkName;
 // Bar
 // Trip
 
+
 // Needs from server:
 
 // generate new PubWlk on click of generate button
 $genButton.on('click', function(){
-
+	$(".loader").fadeIn("slow");
 	var address = $("#start").val();
 	number_stops = $("#number_stops").val();
 	stop_counter = parseInt(number_stops);
-	var radius = (parseFloat($("#radius_input").val()) * 1609.34)
+	var radius = (parseFloat($("#radius_input").val()) * 1609.34);
 	geocode(address, number_stops, radius);
 })
 
@@ -127,6 +128,7 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 }
 
 function buttonCreate(bars, walkName){
+	$(".loader").fadeOut("slow");
 	var $regenButton = $("<button>Regenerate PubWlk</button>")
 	var $trashButton = $("<button>Trash</button>")
 	var $confirmButton = $("<button>Confirm PubWlk</button>")
@@ -165,8 +167,8 @@ function createTrip(bars, walkName){
 	var tripData = {user_rating: null, completed: false, time_created: time, name: walkName, map_url: map_url}
 
 	// create bars data
-	var barsData = []
-	var $barDivs = $('div')
+	var barsData = [];
+	var $barDivs = $('div').slice(1);
 	
 	for (var i = 1; i < bars.length + 1; i++){
 		var name = $barDivs[i].children[0].innerText
@@ -195,11 +197,11 @@ function createTrip(bars, walkName){
 }
 
 function regenTrip(){
+	$(".loader").fadeIn("slow");
 	var new_bar_set = allDemBars.results.slice(stop_counter, (parseInt(number_stops) + stop_counter));
 	stop_counter += parseInt(number_stops);
 	showTrip(new_bar_set);
 }
-
 
 
 	
