@@ -20,34 +20,41 @@ $checkbox.on("click", function () {
 	type: "PUT",
 	data: JSON.stringify({completed: completed})
 	}).done(function (data) {
-		displayInfo(data)
+		var parsedData = JSON.parse(data);
+		if (parsedData.completed == true){
+			$checkbox.attr('checked', true)
+		} else {
+			$checkbox.attr('checked', false)
+		}
 	})
 });
 
 // Rate a trip
 $rateButton = $("#rate")
-$rateButton.on("click", function () {
+$rateButton.on("click", function (e) {
+	e.preventDefault();
 	var rating = parseInt($('select').val());
 	$.ajax({
 		url: "/users/" + user_id + "/trips/" + trip_id,
 		type: "PUT",
 		data: JSON.stringify({user_rating: rating})
 	}).done(function (data) {
-		displayInfo(data)
+		var parsedData = JSON.parse(data);
+		$("p").text("Current Rating: " + parsedData.user_rating);
 	})
 });
 
 // function to render parsedData to DOM
-function displayInfo(data){
-		var parsedData = JSON.parse(data);
-		// alert(parsedData.name + " has been edited!");
-		if (parsedData.completed == true){
-			$checkbox.attr('checked', true)
-		} else {
-			$checkbox.attr('checked', false)
-		}
-		$("p").text("Current Rating: " + parsedData.user_rating);
-}
+// function displayInfo(data){
+// 		var parsedData = JSON.parse(data);
+// 		// alert(parsedData.name + " has been edited!");
+// 		if (parsedData.completed == true){
+// 			$checkbox.attr('checked', true)
+// 		} else {
+// 			$checkbox.attr('checked', false)
+// 		}
+// 		$("p").text("Current Rating: " + parsedData.user_rating);
+// }
 
 
 

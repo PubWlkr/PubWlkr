@@ -1,6 +1,8 @@
+body {
+	font-family: 'Homenaje', sans-serif;
+}
 
 h1 {
-	font-family: 'Homenaje', sans-serif;
 	text-align: center;
 	font-size: 3em;
 }
@@ -17,16 +19,26 @@ h1 {
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
-
 #landing {
 	clear: both;
 	background-image: url("https://diaspora-fr.org/camo/9dce036be165b2dfeab2278d0d699a87aced65d0/68747470733a2f2f692e63687a6267722e636f6d2f6d6178573530302f383338353639343732302f6836394242413434362f");
 	background-size: cover;
-	height: 58%;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+#overlay {
+	width: 50%;
+	height: 50%;
+	background-color: rgba(255, 255, 255, 0.3);
+	margin: 150 0 0 85;
+	border-radius: 10px;
 }
 
 #button_contain {
 	text-align: center;
+	padding-top: 10px;
 }
 
 button {
