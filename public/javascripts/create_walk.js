@@ -2,13 +2,23 @@ console.log("connected!")
 
 // globals
 var $genButton = $('#generate')
+// all bars returned from a search (20)
 var allDemBars;
+// current set of bars being considered (just addresses)
 var address_array = []
+
 var $iframe;
 var map_url;
+
+// parameter for the trip
 var number_stops;
 var stop_counter = 0;
 var walkName;
+
+// Bar
+// Trip
+
+// Needs from server:
 
 // generate new PubWlk on click of generate button
 $genButton.on('click', function(){
@@ -19,6 +29,8 @@ $genButton.on('click', function(){
 	var radius = (parseFloat($("#radius_input").val()) * 1609.34)
 	geocode(address, number_stops, radius);
 })
+
+// GET /api/bars
 
 // get latitude and longitude of starting point
 function geocode(address, number_stops, radius){
@@ -68,7 +80,7 @@ function showTrip(bars) {
 
 		domLoad(name, pic_url, address, price_level, rating, place_id)
 	}
-	
+
 	// grab the name of the walk
 	if ($('#name').val() != undefined){
 		walkName = $('#name').val();
