@@ -19,39 +19,24 @@
 	<h2>My PubWlks</h2>
 
 	{{#trips}}
+	{{^completed}}
 		<div>
 			<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
-			<iframe
-  			width="200"
-  			height="200"
-  			frameborder="0" style="border:0"
-  			src="{{map_url}}">
-			</iframe>
-			<br><br>
-			<form>
-				<label>Completed?
-					<input type="hidden" id="ids" value="{{user_id}} {{id}}">
-					<input id="checkbox" type="checkbox" {{#completed}}checked="{{completed}}"{{/completed}}>
-				</label>
-			</form>
 
-			<p>Current Rating: {{user_rating}}</p>
-			<form>
-			<select name="rating">Rating: 
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-			</select>
-			<button id="rate">Rate PubWlk!</button> 
-			</form>
+			<h3>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</h3>
 
-			<form method="POST" action="/trips/{{id}}">
-				<input type="hidden" name="_method" value="DELETE">
-				<button>Delete PubWlk</button>
-			</form>
+			<p>Gasp! Incomplete PubWlk!</p>
 		</div>
+	{{/completed}}
+	{{#completed}}
+		<div>
+			<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
+
+			<h3>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</h3>
+
+			<p>You've walked this PubWlk!</p>
+		</div>
+	{{/completed}}
 	{{/trips}}
 
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
