@@ -169,7 +169,7 @@ function createTrip(bars, walkName){
 	var $barDivs = $('div')
 	
 	for (var i = 1; i < bars.length + 1; i++){
-		var name = $barDivs[i].children[0].innerText.replace(/Name: /, "")
+		var name = $barDivs[i].children[0].innerText
 		var address = $barDivs[i].children[2].children[0].innerText
 		var website = $barDivs[i].children[2].children[1].innerText
 		var pic_url = $barDivs[i].children[1].src
