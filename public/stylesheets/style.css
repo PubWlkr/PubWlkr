@@ -7,6 +7,10 @@ h1 {
 	font-size: 3em;
 }
 
+li {
+	list-style-type: none;
+}
+
 .visible {
   visibility: visible;
   opacity: 1;
@@ -17,6 +21,24 @@ h1 {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+nav {
+	text-align: center;
+	font-size: 2em;
+}
+
+a {
+	text-decoration: none;
+}
+
+nav a {
+	padding: 10px;
+}
+
+a:hover{
+	color: #f79727;
+	text-decoration: underline;
 }
 
 #landing {
@@ -64,3 +86,23 @@ button:hover {
   background: url('/images/Beer_poured.gif') 50% 50% no-repeat rgb(249,249,249);
 }
 
+.wrap {
+	width: 40%;
+	margin: 0 auto;
+}
+
+.col-one {
+	background-color: #bdb8b8;
+	padding: 10px;
+	border-radius: 10px;
+	float: left;
+	width: 40%;
+}
+
+.col-two {
+	background-color: #bdb8b8;
+	padding: 10px;
+	border-radius: 10px;
+	float: right;
+	width: 40%;
+}

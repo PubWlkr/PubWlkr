@@ -8,29 +8,29 @@
 	<script type="text/javascript">$(window).load(function() {$(".loader").fadeOut("slow");})</script>
 </head>
 
-<body>
+<body align="center">
 <div class="loader"></div>
 
 	<header>
 		<h1>PubWlkr</h1>
 		<nav>
-			<a href="/trips">All PubWlks</a> |
-			<a href ="/users/{{user_id}}">My PubWlks</a> |
-			<a href="/users/{{user_id}}/trips/new">New PubWlk</a> |
+			<a href="/trips">All PubWlks</a> 
+			<a href ="/users/{{user_id}}">My PubWlks</a> 
+			<a href="/users/{{user_id}}/trips/new">New PubWlk</a> 
 			<a href="/session">Log Out</a> 
 		</nav>
 	</header>
 
 	<hr>
 	
-	<h2>All PubWlks Evr</h2>
+	<h2>All PubWlks</h2>
 
 	{{#trips}}
 		<div>
 			<h2><a href="/trips/{{id}}">{{name}}</a></h2>
 			<iframe
-  			width="200"
-  			height="200"
+  			width="400"
+  			height="400"
   			frameborder="0" style="border:0"
   			src="{{map_url}}">
 			</iframe>

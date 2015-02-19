@@ -13,42 +13,45 @@
 	<header>
 		<h1>PubWlkr</h1>
 		<nav>
-			<a href="/trips">All PubWlks</a> |
-			<a href ="/users/{{user_id}}">My PubWlks</a> |
-			<a href="/users/{{user_id}}/trips/new">New PubWlk</a> |
+			<a href="/trips">All PubWlks</a>
+			<a href ="/users/{{user_id}}">My PubWlks</a> 
+			<a href="/users/{{user_id}}/trips/new">New PubWlk</a> 
 			<a href="/session">Log Out</a> 
 		</nav>
 	</header>
 
 	<hr>
 	
-	<h2>My PubWlks</h2>
+	<h2 style="text-align: center;">My PubWlks</h2>
+<div class="wrap">
+	<div class="col-one">
+		<h3>Gasp! Incomplete PubWlks!</h3>
+		{{#trips}}
+		{{^completed}}
+			<div>
+				<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
 
-	<h3>Gasp! Incomplete PubWlks!</h3>
-	{{#trips}}
-	{{^completed}}
-		<div>
-			<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
+				<p>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</p>
 
-			<p>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</p>
+			</div>
+		{{/completed}}
+		{{/trips}}
+	</div>
 
-		</div>
-	{{/completed}}
-	{{/trips}}
+	<div class="col-two">
+		<h3>You've walked these PubWlks!</h3>
+		{{#trips}}
+		{{#completed}}
+			<div>
+				<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
 
-	<hr>
+				<p>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</p>
 
-	<h3>You've walked these PubWlks!</h3>
-	{{#trips}}
-	{{#completed}}
-		<div>
-			<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
-
-			<p>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</p>
-
-		</div>
-	{{/completed}}
-	{{/trips}}
+			</div>
+		{{/completed}}
+		{{/trips}}
+	</div>
+</div>
 
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
