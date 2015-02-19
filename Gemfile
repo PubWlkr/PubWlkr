@@ -10,3 +10,4 @@ gem "thin"
 gem "mustache"
 gem 'json'
 gem 'httparty'
+gem 'unicorn'
