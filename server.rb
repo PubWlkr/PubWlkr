@@ -136,7 +136,6 @@ put '/users/:user_id/trips/:id' do
 	trip = Trip.find(params[:id])
 
 	attrs = JSON.parse(request.body.read)
-
 	if attrs["completed"] != nil
 		completed = attrs["completed"]
 		trip.completed = completed
