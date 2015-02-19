@@ -16,6 +16,10 @@ configure do
 	set :session_secret, 'secret'
 end
 
+after do
+	ActiveRecord::Base.connection.close
+end
+
 # SPLASH
 get '/' do
 	File.read("./views/index.html")
@@ -129,6 +133,7 @@ put '/users/:user_id/trips/:id' do
 	trip = Trip.find(params[:id])
 
 	attrs = JSON.parse(request.body.read)
+
 	if attrs["completed"] != nil
 		completed = attrs["completed"]
 		trip.completed = completed
@@ -186,9 +191,10 @@ end
 # GET SPECIFIC TRIP FROM DATABASE
 get '/trips/:id' do
 	if session[:user_id]
+		user_id = User.find(session[:user_id]).id
 		trip = Trip.find(params[:id])
 		bars = trip.bars.to_a
-		Mustache.render(File.read("./views/trips/trip_show.html"), trip: trip, bars: bars)
+		Mustache.render(File.read("./views/trips/trip_show.html"), trip: trip, bars: bars, user_id: user_id)
 	else
 		redirect "/"
 	end
