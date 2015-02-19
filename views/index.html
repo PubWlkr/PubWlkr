@@ -1,39 +1,49 @@
 <html>
 <head>
 	<title>pubwlkr</title>
+	<link href='http://fonts.googleapis.com/css?family=Homenaje' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
 
 <body>
 
-	<h1>PubWlkr</h1>
+	<header>
+		<h1>PubWlkr</h1>
 
-	<button id="sign_in">Sign Up</button>
-	<div class="hidden" id="new_user_form">
-		<form method="POST" action="/users">
-			<input name="f_name" placeholder="First Name">
-			<input name="l_name" placeholder="Last Name"> 
-			<input name="email" placeholder="Email Address">
-			<input name="password" type="password" placeholder="Password">
-			<input type="submit">
-		</form>
-	</div>
+		<div id="button_contain">
+			<button id="sign_in">Sign Up</button>
+			<br><br>
+			<div class="hidden" id="new_user_form">
+				<form method="POST" action="/users">
+					<input name="f_name" placeholder="First Name">
+					<input name="l_name" placeholder="Last Name"> 
+					<input name="email" placeholder="Email Address">
+					<input name="password" type="password" placeholder="Password">
+					<input type="submit">
+				</form>
+			</div>
+	
+			<button id="log_in">Log In</button>
+			<br><br>
+			<div class="hidden" id="login_form">
+				<form method="POST" action="/session">
+					<input name="email" placeholder="Email Address">
+					<input name="password" type="password" placeholder="Password">
+					<input type="submit">
+				</form>
+			</div>
+		</div>
 
-	<button id="log_in">Log In</button>
-	<div class="hidden" id="login_form">
-		<form method="POST" action="/session">
-			<input name="email" placeholder="Email Address">
-			<input name="password" type="password" placeholder="Password">
-			<input type="submit">
-		</form>
-	</div>
+	</header>
+
+	<div id="landing"></div>
+
 
 
 	<!-- LIBRARIES -->
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="javascripts/main.js"></script>
-
 
 </body>
 </html>
