@@ -31,7 +31,7 @@
 			<form>
 				<label>Completed?
 					<input type="hidden" id="ids" value="{{user_id}} {{id}}">
-					<input id="checkbox" type="checkbox" checked="{{completed}}">
+					<input id="checkbox" type="checkbox" {{#completed}} checked {{/completed}}>
 				</label>
 			</form>
 

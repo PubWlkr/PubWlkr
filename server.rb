@@ -1,6 +1,6 @@
 require 'sinatra'
-require 'sinatra/reloader'
-require 'pry'
+require 'sinatra/reloader' if development?
+require 'pry' if development?
 require 'active_record'
 require 'mustache'
 require 'json'
@@ -14,6 +14,10 @@ require_relative './lib/stop.rb'
 configure do
 	enable :sessions
 	set :session_secret, 'secret'
+end
+
+after do
+	ActiveRecord::Base.connection.close
 end
 
 # SPLASH
@@ -30,12 +34,13 @@ end
 # LOG IN WITH USER INFO AND VERIFY
 post '/session' do
 	user = User.find_by(email: params[:email])
-		if user && user.authenticate(params[:password])
-			session[:user_id] = user.id
-			redirect "/users/#{user.id}"
-		else
-			redirect "/"
-		end
+
+	if user && user.authenticate(params[:password])
+		session[:user_id] = user.id
+		redirect "/users/#{user.id}"
+	else
+		redirect "/"
+	end
 end
 
 # CREATE USER AND PERSIST IN DATABASE
@@ -99,6 +104,8 @@ post '/trips' do
 	authorize_user(user)
 	user_id = user.id
 	attrs = JSON.parse(request.body.read)
+
+	# TripCreator.new([trip_attrs, bars]).create
 
 	attrs[0]["user_id"] = user_id
 	trip_attrs = attrs[0]
