@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>pubwlkr</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
 
@@ -18,29 +19,33 @@
 	
 	<h2>My PubWlks</h2>
 
+	<h3>Gasp! Incomplete PubWlks!</h3>
 	{{#trips}}
 	{{^completed}}
 		<div>
 			<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
 
-			<h3>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</h3>
+			<p>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</p>
 
-			<p>Gasp! Incomplete PubWlk!</p>
 		</div>
 	{{/completed}}
+	{{/trips}}
+
+	<hr>
+
+	<h3>You've walked these PubWlks!</h3>
+	{{#trips}}
 	{{#completed}}
 		<div>
 			<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
 
-			<h3>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</h3>
+			<p>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</p>
 
-			<p>You've walked this PubWlk!</p>
 		</div>
 	{{/completed}}
 	{{/trips}}
 
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript" src="/javascripts/edit_walk.js"></script>
 </body>
 </html>
