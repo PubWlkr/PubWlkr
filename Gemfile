@@ -5,7 +5,7 @@ gem "sinatra/reloader"
 # maybe need gem "sinatra-contrib"??
 
 gem "bcrypt"
-gem "active_record"
+gem "activerecord"
 gem "pg"
 gem "thin"
 gem "mustache"
