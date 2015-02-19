@@ -17,7 +17,7 @@ h1 {
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
-<<<<<<< HEAD
+
 #landing {
 	clear: both;
 	background-image: url("https://diaspora-fr.org/camo/9dce036be165b2dfeab2278d0d699a87aced65d0/68747470733a2f2f692e63687a6267722e636f6d2f6d6178573530302f383338353639343732302f6836394242413434362f");
@@ -41,7 +41,7 @@ button {
 button:hover {
 	background-color: #f79727;
 }
-=======
+
 .loader {
   position: fixed;
   left: 0px;
@@ -51,4 +51,4 @@ button:hover {
   z-index: 9999;
   background: url('/images/Beer_poured.gif') 50% 50% no-repeat rgb(249,249,249);
 }
->>>>>>> master
+
