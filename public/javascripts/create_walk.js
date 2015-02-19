@@ -114,15 +114,19 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 		var waypoints = mapStrings.join("|")
 		map_url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyDKBnu8JwKe6sSLCuT6RK5PiCGUQbmbm_Q&origin=" + origin + "&destination=" + destination + "&waypoints=" + waypoints
 
-    $iframe = $("<iframe width=400 height=400 frameborder='0' style='border:0' src='" + map_url + "'></iframe>")
+    $iframe = $("<div align='center'><iframe width=400 height=400 frameborder='0' style='border:0' src='" + map_url + "'></iframe></div>")
+
+    $clear_div = $("<div>");
+    $clear_div.attr("style", "clear:both;");
 
 
 		// append all the bars
 		var parsedData = JSON.parse(data);
 		var website = parsedData.result.website;
-		var barDiv = $("<div id ='" + place_id + "'><h2>Name: " + name + "</h2><img width=100 height=100 src=" + pic_url + "><ul><li>" + address + "</li><li><a href='" + website + "' target='_blank'>" + website + "</a></li><li>Price Level: " + price_level + "</li><li>Average Rating: " + rating + "</li></ul></div>");
+		var barDiv = $("<div class='wrap3' id ='" + place_id + "'><div class='bar-images'><img class='bar-photo' src=" + pic_url + "></div><div class='bar-info'><h3>" +name + "</h3><ul><li>" + address + "</li><li><a href='" + website + "' target='_blank'>" + website + "</a></li><li>Price Level: " + price_level + "</li><li>Average Rating: " + rating + "</li></ul></div><br></div><br><br>");
 
-		$("#container").append(barDiv);
+		$clear_div.append(barDiv);
+		$("#container").append($clear_div);
 	})
 
 }

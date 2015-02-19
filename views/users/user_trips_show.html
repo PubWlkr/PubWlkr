@@ -25,10 +25,10 @@
 	<h2 style="text-align: center;">My PubWlks</h2>
 <div class="wrap">
 	<div class="col-one">
-		<h3>Gasp! Incomplete PubWlks!</h3>
+		<h2 align="center">Gasp! Incomplete PubWlks!</h2>
 		{{#trips}}
 		{{^completed}}
-			<div>
+			<div style="margin-left: 15px;">
 				<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
 
 				<p>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</p>
@@ -39,10 +39,10 @@
 	</div>
 
 	<div class="col-two">
-		<h3>You've walked these PubWlks!</h3>
+		<h2 align="center">You've walked these PubWlks!</h2>
 		{{#trips}}
 		{{#completed}}
-			<div>
+			<div style="margin-left: 15px;">
 				<h2><a href="/users/{{user_id}}/trips/{{id}}">{{name}}</a></h2>
 
 				<p>My Rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</p>

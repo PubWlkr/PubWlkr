@@ -7,13 +7,18 @@ h1 {
 	font-size: 3em;
 }
 
+h2 {
+	font-size: 2em;
+}
+
 p {
 	font-size: 1.5em;
 }
 
-/*li {
-	list-style-type: none;
-}*/
+ul {
+	list-style: none;
+	padding-left: 0px;
+}
 
 .visible {
   visibility: visible;
@@ -91,7 +96,7 @@ button:hover {
 }
 
 .wrap {
-	width: 40%;
+	width: 60%;
 	margin: 0 auto;
 }
 
@@ -100,7 +105,7 @@ button:hover {
 	padding: 10px;
 	border-radius: 10px;
 	float: left;
-	width: 40%;
+	width: 47%;
 }
 
 .col-two {
@@ -108,7 +113,7 @@ button:hover {
 	padding: 10px;
 	border-radius: 10px;
 	float: right;
-	width: 40%;
+	width: 47%;
 }
 
 .wrap2 {
@@ -122,7 +127,7 @@ button:hover {
 }
 
 .trip-info {
-	width: 30%;
+	width: 35%;
 	float: right;
 	text-align: left;
 }
