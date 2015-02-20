@@ -36,6 +36,10 @@ footer {
 	margin-top: 70px;
 }
 
+#footer_list {
+	margin-top: 495px;
+}
+
 #copy {
 	padding: 1%;
 	margin-right: 10px;
@@ -205,3 +209,11 @@ button:hover {
 	height: 98%;
 	border-radius: 10px;
 }
+
+.clear-div {
+	margin-top: 50px;
+}
+
+
+
+

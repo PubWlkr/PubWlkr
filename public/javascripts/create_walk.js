@@ -14,6 +14,7 @@ var map_url;
 var number_stops;
 var stop_counter = 0;
 var walkName;
+var $clear_div;
 
 // Bar
 // Trip
@@ -62,7 +63,11 @@ function barSearch(lat, lng, radius, number_stops){
 // show trip, bars, and stops (confirmation page)
 function showTrip(bars) {
 	address_array = []
-	
+
+	$clear_div = $("<div>");
+  $clear_div.attr("style", "clear:both");
+  $clear_div.attr("class", "clear-div");
+
 	for (var i = 0; i < bars.length; i++) {
 
 		var address = bars[i].vicinity;
@@ -116,8 +121,9 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 
     $iframe = $("<div align='center'><iframe width=400 height=400 frameborder='0' style='border:0' src='" + map_url + "'></iframe></div>")
 
-    var $clear_div = $("<div>");
-    $clear_div.attr("style", "clear:both;");
+    // var $clear_div = $("<div>");
+    // $clear_div.attr("style", "clear:both;");
+    // $clear_div.attr("class", "clear-div;");
 
 
 		// append all the bars
