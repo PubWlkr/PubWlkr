@@ -20,6 +20,27 @@ ul {
 	padding-left: 0px;
 }
 
+footer {
+	background-color: #b8b8b8;
+	height: 8%;
+	width: 100%;
+	text-align: right;
+	clear: both;
+}
+
+#landing_footer {
+	margin-top: 133px;
+}
+
+#create_footer {
+	margin-top: 70px;
+}
+
+#copy {
+	padding: 1%;
+	margin-right: 10px;
+}
+
 .form-div {
 	background-color: #c0c0c0;
 	width: 25%;
