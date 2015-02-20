@@ -3,7 +3,6 @@ require 'active_record'
 require 'mustache'
 require 'json'
 require 'httparty'
-require 'pry'
 require_relative "./db/connection.rb"
 require_relative './lib/trip.rb'
 require_relative './lib/user.rb'
