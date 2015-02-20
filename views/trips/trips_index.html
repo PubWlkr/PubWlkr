@@ -28,16 +28,20 @@
 	{{#trips}}
 		<div>
 			<h2><a href="/trips/{{id}}">{{name}}</a></h2>
-			<h3>Created by: {{user.f_name}} {{user.l_name}}</h3>
-			<h3>{{user.f_name}}'s rating: {{user_rating}}</h3>
 			<iframe
   			width="400"
   			height="400"
   			frameborder="0" style="border:0"
   			src="{{map_url}}">
 			</iframe>
+			<h3>Created by: {{user.f_name}} {{user.l_name}}</h3>
+			<h3>{{user.f_name}}'s rating: {{user_rating}}</h3>
 		</div>
 	{{/trips}}
+
+	<footer>
+		<p id="copy">PubWlkr &copy; 2015</p>
+	</footer>
 
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
