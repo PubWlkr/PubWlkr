@@ -3,6 +3,7 @@ require 'active_record'
 require 'mustache'
 require 'json'
 require 'httparty'
+require 'pry'
 require_relative "./db/connection.rb"
 require_relative './lib/trip.rb'
 require_relative './lib/user.rb'
@@ -109,13 +110,11 @@ post '/trips' do
 	trip_attrs = attrs[0]
 	trip = Trip.create(trip_attrs)
 	trip_id = trip.id
-
 	attrs[1].each do |bar|
 		new_bar = Bar.create(bar)
 		bar_id = new_bar.id
 		Stop.create({bar_id: bar_id, trip_id: trip_id, completed: false, stop_number: attrs[1].index(bar)})
 	end
-
 	trip.to_json
 end
 

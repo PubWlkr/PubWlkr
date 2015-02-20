@@ -179,35 +179,34 @@ function buttonCreate(bars, walkName){
 // create trip, bars, and stops; persist to database
 
 function createTrip(bars, walkName){
-
 	// create trip data
 	var time = new Date();
 	var tripData = {user_rating: null, completed: false, time_created: time, name: walkName, map_url: map_url}
-
 	// create bars data
 	var barsData = [];
-	var $barDivs = $('div').slice(1);
-	
-	for (var i = 1; i < bars.length + 1; i++){
-		var name = $barDivs[i].children[0].innerText
-		var address = $barDivs[i].children[2].children[0].innerText
-		var website = $barDivs[i].children[2].children[1].innerText
-		var pic_url = $barDivs[i].children[1].src
-		var rating = $barDivs[i].children[2].children[3].innerText.replace(/Average Rating: /, "")
-		var price_level = $barDivs[i].children[2].children[2].innerText.replace(/Price Level: /, "")
+	var $barDivs = $(".wrap3")
+
+	for (var i = 0; i < bars.length; i++){
+		var name = $barDivs[i].children[1].children[0].innerText
+		var address = $barDivs[i].children[1].children[1].children[0].innerText
+		var website = $barDivs[i].children[1].children[1].children[1].children[0].innerText
+		var pic_url = $barDivs[i].children[0].children[0].src
+		var rating = $barDivs[i].children[1].children[1].children[3].innerText.replace(/Average Rating: /, "")
+		var price_level = $barDivs[i].children[1].children[1].children[2].innerText.replace(/Price Level: /, "")
 		var place_id = $barDivs[i].id
 		var oneBar = {name: name, address: address, website: website, pic_url: pic_url, rating: rating, price_level: price_level, place_id: place_id}
 		barsData.push(oneBar);
 	}
 
 	var dbData = JSON.stringify([tripData, barsData])
-	
+
 	// ajax call with all data
 	$.ajax({	
 		url: '/trips',
 		type: 'POST',
 		data: dbData
 	}).done(function (data){
+
 		var parsedData = JSON.parse(data);
 		alert(parsedData.name + " has been made!");
 		document.location.href = "/users/" + parsedData.user_id + "/trips/" + parsedData.id;
