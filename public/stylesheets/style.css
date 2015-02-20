@@ -20,6 +20,28 @@ ul {
 	padding-left: 0px;
 }
 
+.form-div {
+	background-color: #c0c0c0;
+	width: 25%;
+	margin: 0 auto;
+	padding: 10px;
+	font-size: 1.25em;
+	border-radius: 10px;
+	border: 3px solid black;
+}
+
+.pseudo-nav {
+	text-align: center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.edit-button {
+	display: inline;
+	padding: 5px;
+}
+
 .visible {
   visibility: visible;
   opacity: 1;
@@ -74,11 +96,11 @@ a:hover{
 
 button {
 	font-family: 'Homenaje', sans-serif;
-	width: 100px;
+	width: 125px;
 	height: 50px;
 	font-size: 1em;
 	border-radius: 5px;
-	border: none;
+	border: 3px solid black;
 }
 
 button:hover {
@@ -105,7 +127,8 @@ button:hover {
 	padding: 10px;
 	border-radius: 10px;
 	float: left;
-	width: 47%;
+	width: 46%;
+	border: 3px solid black;
 }
 
 .col-two {
@@ -113,7 +136,8 @@ button:hover {
 	padding: 10px;
 	border-radius: 10px;
 	float: right;
-	width: 47%;
+	width: 46%;
+	border: 3px solid black;
 }
 
 .wrap2 {

@@ -24,48 +24,54 @@
 
 <div id="container">
 
-	<h2>Create a New PubWlk</h2>
+	<h2 align="center">Create a New PubWlk</h2>
+	<div class="form-div">
+		<form>
+			<label>Name Your PubWlk: 
+				<input size="50" id="name" placeholder="My Sweet PubWlk">
+			</label>
+		</form>
 
-	<form>
-		<input id="name" placeholder="Give your PubWlk a name">
-	</form>
+		<form>
+				<label>Starting Point: 
+				<input size="50" id="start" placeholder="Enter Address, Zip, or Landmark">
+			</label>
+		</form>
 
-	<form>
-		<input id="start" placeholder="Enter Location">
-	</form>
-
-	<form>
-		<label>Number of Stops: 
-		<select id="number_stops">
-			<option>3</option>
-			<option>4</option>
-			<option>5</option>
-			<option>6</option>
-			<option>7</option>
-			<option>8</option>
-			<option>9</option>
-			<option>10</option>
-		</select>
-		</label>
-	</form>
-
-	<form>
-		<label>Define Search Radius (in miles): 
-			<select id="radius_input">
-				<option>.25</option>
-				<option>.50</option>
-				<option>.75</option>
-				<option>1</option>
-				<option>1.25</option>
-				<option>1.5</option>
-				<option>1.75</option>
-				<option>2</option>
+		<form>
+			<label>Number of Stops:&nbsp;&nbsp;
+			<select id="number_stops">
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
 			</select>
-		</label>
-	</form>
+			</label>
+		</form>
 
-	<button id="generate">Generate PubWlk!</button>
-
+		<form>
+			<label>Define Search Radius (in miles):&nbsp;&nbsp;
+				<select id="radius_input">
+					<option>.25</option>
+					<option>.50</option>
+					<option>.75</option>
+					<option>1</option>
+					<option>1.25</option>
+					<option>1.5</option>
+					<option>1.75</option>
+					<option>2</option>
+				</select>
+			</label>
+		</form>
+	</div>
+	<br><br>
+	
+		<div align="center"><button id="generate">Generate PubWlk!</button></div>
+	
 </div>
 
 	<!-- LIBRARIES -->

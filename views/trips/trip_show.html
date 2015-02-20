@@ -21,32 +21,47 @@
 	</header>
 
 	<hr>
-	{{#trip}}
-	<h2>{{name}}</h2>
-	<h4>Created by: {{user.f_name}} {{user.l_name}}</h4>
-	<h4>{{user.f_name}}'s rating: {{user_rating}}</h4>
-	<div>
-		<iframe
-  		width="600"
-  		height="450"
-  		frameborder="0" style="border:0"
-  		src="{{map_url}}">
-		</iframe>
-	</div>
-	{{/trip}}
-	<br><br>
-	{{#bars}}
+	<div align="center">
+		{{#trip}}
+		<h2>{{name}}</h2>
+		<h3>Created by: {{user.f_name}} {{user.l_name}}</h3>
+		<h3>{{user.f_name}}'s rating: {{user_rating}} {{^user_rating}} Unrated {{/user_rating}}</h3>
 		<div>
-			<img width="20%" src="{{pic_url}}">
-			<h2>{{name}}</h2>
-			<ul>
-				<li>{{address}}</li>
-				<li><a href="{{website}}" target="_blank">{{website}}</a></li>
-				<li>Price Level: {{price_level}}</li>
-				<li>Average Rating: {{rating}}</li>
-			</ul>
+			<iframe
+	  		width="500"
+	  		height="400"
+	  		frameborder="0" style="border:0"
+	  		src="{{map_url}}">
+			</iframe>
 		</div>
+		{{/trip}}
+</div>
+
+	<div style="clear: both;">
+		<br><br><br><br>
+	{{#bars}}
+		
+		<div class="wrap3">
+			<div class="bar-images">
+				<img class="bar-photo" src="{{pic_url}}">
+			</div>
+			<div class="bar-info">
+				<h3>{{name}}</h3>
+				<ul>
+					<li>{{address}}</li>
+					<li><a href="{{website}}" target="_blank">{{website}}</a></li>
+					<li>Price Level: {{price_level}}</li>
+					<li>Average Rating: {{rating}}</li>
+				</ul>
+			</div>
+			<br>
+		</div>
+		<br><br>
+		
 	{{/bars}}
+
+	</div>
+
 
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

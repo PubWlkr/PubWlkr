@@ -116,7 +116,7 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 
     $iframe = $("<div align='center'><iframe width=400 height=400 frameborder='0' style='border:0' src='" + map_url + "'></iframe></div>")
 
-    $clear_div = $("<div>");
+    var $clear_div = $("<div>");
     $clear_div.attr("style", "clear:both;");
 
 
@@ -133,9 +133,16 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 
 function buttonCreate(bars, walkName){
 	$(".loader").fadeOut("slow");
-	var $regenButton = $("<button>Regenerate PubWlk</button>")
-	var $trashButton = $("<button>Trash</button>")
-	var $confirmButton = $("<button>Confirm PubWlk</button>")
+	var $regenButton = $("<li class='edit-button'><button>Regenerate PubWlk</button></li>");
+	var $trashButton = $("<li class='edit-button'><button>Trash</button></li>");
+	var $confirmButton = $("<li class='edit-button'><button>Confirm PubWlk</button></li>");
+
+	var $ul = $("<ul>");
+	$ul.attr("class", "pseudo-nav");
+	$ul.append($confirmButton);
+	$ul.append($trashButton);
+	$ul.append($regenButton);
+
 
 	// $regenButton.on('click', function(){
 
@@ -154,9 +161,10 @@ function buttonCreate(bars, walkName){
 	})
 
 	setTimeout(function () {
-		$("#container").prepend($regenButton);
-		$("#container").prepend($trashButton);
-		$("#container").prepend($confirmButton);
+		$("#container").prepend($ul)
+		// $("#container").prepend($regenButton);
+		// $("#container").prepend($trashButton);
+		// $("#container").prepend($confirmButton);
 	}, 1000)
 
 }

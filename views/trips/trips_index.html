@@ -28,14 +28,14 @@
 	{{#trips}}
 		<div>
 			<h2><a href="/trips/{{id}}">{{name}}</a></h2>
+			<h3>Created by: {{user.f_name}} {{user.l_name}}</h3>
+			<h3>{{user.f_name}}'s rating: {{user_rating}}</h3>
 			<iframe
   			width="400"
   			height="400"
   			frameborder="0" style="border:0"
   			src="{{map_url}}">
 			</iframe>
-			<h3>Created by: {{user.f_name}} {{user.l_name}}</h3>
-			<h3>{{user.f_name}}'s rating: {{user_rating}}</h3>
 		</div>
 	{{/trips}}
 
