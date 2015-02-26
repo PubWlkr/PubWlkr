@@ -14,7 +14,7 @@ var map_url;
 var number_stops;
 var stop_counter = 0;
 var walkName;
-var $clear_div;
+var $clear_ul;
 
 // Bar
 // Trip
@@ -64,9 +64,11 @@ function barSearch(lat, lng, radius, number_stops){
 function showTrip(bars) {
 	address_array = []
 
-	$clear_div = $("<div>");
-  $clear_div.attr("style", "clear:both");
-  $clear_div.attr("class", "clear-div");
+	$clear_ul = $("<ul>");
+  // $clear_ul.attr("style", "clear:both");
+  // $clear_ul.attr("class", "clear-div");
+  $clear_ul.attr("class", "ui-sortable");
+  $clear_ul.attr("id", "sortable");
 
 	for (var i = 0; i < bars.length; i++) {
 
@@ -129,10 +131,14 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 		// append all the bars
 		var parsedData = JSON.parse(data);
 		var website = parsedData.result.website;
-		var barDiv = $("<div class='wrap3' id ='" + place_id + "'><div class='bar-images'><img class='bar-photo' src=" + pic_url + "></div><div class='bar-info'><h3>" +name + "</h3><ul><li>" + address + "</li><li><a href='" + website + "' target='_blank'>" + website + "</a></li><li>Price Level: " + price_level + "</li><li>Average Rating: " + rating + "</li></ul></div><br></div><br><br>");
+		var barLi = $("<li class='ui-state-default ui-sortable-handle'><div class='wrap3' id ='" + place_id + "'><div class='bar-images'><img class='bar-photo' src=" + pic_url + "></div><div class='bar-info'><h3>" +name + "</h3><ul><li>" + address + "</li><li><a href='" + website + "' target='_blank'>" + website + "</a></li><li>Price Level: " + price_level + "</li><li>Average Rating: " + rating + "</li></ul></div><br></div><br><br></li>");
 
-		$clear_div.append(barDiv);
-		$("#container").append($clear_div);
+		$clear_ul.append(barLi);
+		$("#container").append($clear_ul);
+
+		// jQueryUI sortable calls
+		$("#sortable").sortable();
+		$("#sortable").disableSelection();
 	})
 
 }
