@@ -99,6 +99,7 @@ function showTrip(bars) {
 	$("#container").empty()
 	// prepend title and map
 	setTimeout(function(){
+		$("#container").prepend("<p align='center'>Drag to Rearrange</p>")
 		$("#container").prepend($iframe);
 		$("#container").prepend($title);	
 	}, 1000)
