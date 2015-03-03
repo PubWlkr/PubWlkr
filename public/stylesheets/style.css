@@ -214,6 +214,12 @@ button:hover {
 	margin-top: 50px;
 }
 
+.delete-button {
+	margin-top: 8px;
+	width: 150px;
+	height: 32px;
+}
+
 
 
 

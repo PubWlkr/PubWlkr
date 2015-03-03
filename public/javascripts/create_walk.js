@@ -132,11 +132,14 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 		// append all the bars
 		var parsedData = JSON.parse(data);
 		var website = parsedData.result.website;
-		var barLi = $("<li class='ui-state-default ui-sortable-handle'><div class='wrap3' id ='" + place_id + "'><div class='bar-images'><img class='bar-photo' src=" + pic_url + "></div><div class='bar-info'><h3>" +name + "</h3><ul><li>" + address + "</li><li><a href='" + website + "' target='_blank'>" + website + "</a></li><li>Price Level: " + price_level + "</li><li>Average Rating: " + rating + "</li></ul></div><br></div><br><br></li>");
+		var barLi = $("<li class='ui-state-default ui-sortable-handle'><div class='wrap3' id ='" + place_id + "'><div class='bar-images'><img class='bar-photo' src=" + pic_url + "></div><div class='bar-info'><h3>" +name + "</h3><ul><li>" + address + "</li><li><a href='" + website + "' target='_blank'>" + website + "</a></li><li>Price Level: " + price_level + "</li><li>Average Rating: " + rating + "</li></ul><button class='delete-button' id='delete" + place_id + "'>Remove from PubWlk</button></div><br></div><br><br></li>");
 
 		$clear_ul.append(barLi);
 		$("#container").append($clear_ul);
 
+		$("#delete" + place_id).on('click', function(){
+			$("#" + place_id).parent().remove();
+		})
 		// jQueryUI sortable calls
 		$("#sortable").sortable();
 		$("#sortable").disableSelection();
