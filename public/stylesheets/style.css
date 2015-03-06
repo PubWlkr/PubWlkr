@@ -117,6 +117,10 @@ a:hover{
 
 }
 
+#container {
+	text-align: center;
+}
+
 #overlay {
 	width: 50%;
 	height: 50%;

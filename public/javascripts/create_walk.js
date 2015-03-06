@@ -97,9 +97,34 @@ function showTrip(bars) {
 	var $title = $("<h1>" + walkName + "</h1>")
 	// empty the container div
 	$("#container").empty()
+
+	var $addBarButton = $("<button align='center'>Add Another Bar</button>")
+	$addBarButton.on("click", function(){
+		// get the next bar in the allDemBars array
+		var newBar = allDemBars.results[stop_counter];
+		stop_counter += 1;
+
+		// add bar to DOM
+		var address = newBar.vicinity;
+		address_array.push(address);
+		var name = newBar.name;
+		var price_level = newBar.price_level;
+		var rating = newBar.rating;
+		if (newBar.photos){
+			var photo_reference = newBar.photos[0].photo_reference;
+			var pic_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo_reference + "&key=AIzaSyDKBnu8JwKe6sSLCuT6RK5PiCGUQbmbm_Q";
+		} else {
+			var pic_url = "http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png"
+		}
+		
+		var place_id = newBar.place_id;
+		domLoad(name, pic_url, address, price_level, rating, place_id)
+	})
+
 	// prepend title and map
 	setTimeout(function(){
-		$("#container").prepend("<p align='center'>Drag to Rearrange</p>")
+		$("#container").prepend($addBarButton);
+		$("#container").prepend("<p align='center'>Drag to Rearrange</p>");
 		$("#container").prepend($iframe);
 		$("#container").prepend($title);	
 	}, 1000)
@@ -226,6 +251,7 @@ function createTrip(bars, walkName){
 function regenTrip(){
 	$(".loader").fadeIn("slow");
 	var new_bar_set = allDemBars.results.slice(stop_counter, (parseInt(number_stops) + stop_counter));
+	debugger
 	stop_counter += parseInt(number_stops);
 	showTrip(new_bar_set);
 }
