@@ -119,6 +119,18 @@ function showTrip(bars) {
 		
 		var place_id = newBar.place_id;
 		domLoad(name, pic_url, address, price_level, rating, place_id)
+
+	$footer = $("footer");
+	$footer.remove();
+	setTimeout(function () {
+		var $new_footer = $("<footer>");
+		var $p_footer = $("<p>");
+		var copyright = $("<span>").html('&copy;').text();
+		$p_footer.attr("id","copy");
+		$p_footer.text("PubWlkr " + copyright + " 2015");
+		$new_footer.append($p_footer);
+		$new_footer.appendTo("#container");
+	}, 1000);
 	})
 
 	// prepend title and map
@@ -169,6 +181,18 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 		$("#sortable").sortable();
 		$("#sortable").disableSelection();
 	})
+
+	$footer = $("footer");
+	$footer.remove();
+	setTimeout(function () {
+		var $new_footer = $("<footer>");
+		var $p_footer = $("<p>");
+		var copyright = $("<span>").html('&copy;').text();
+		$p_footer.attr("id","copy");
+		$p_footer.text("PubWlkr " + copyright + " 2015");
+		$new_footer.append($p_footer);
+		$new_footer.appendTo("#container");
+	}, 1000);
 
 }
 
@@ -254,6 +278,18 @@ function regenTrip(){
 	debugger
 	stop_counter += parseInt(number_stops);
 	showTrip(new_bar_set);
+
+	$footer = $("footer");
+	$footer.remove();
+	setTimeout(function () {
+		var $new_footer = $("<footer>");
+		var $p_footer = $("<p>");
+		var copyright = $("<span>").html('&copy;').text();
+		$p_footer.attr("id","copy");
+		$p_footer.text("PubWlkr " + copyright + " 2015");
+		$new_footer.append($p_footer);
+		$new_footer.appendTo("#container");
+	}, 1000);
 }
 
 
