@@ -44,6 +44,7 @@ footer {
 
 #footer_list {
 	margin-top: 10%;
+	position: relative;
 	bottom: 0;
 }
 
