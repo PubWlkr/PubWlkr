@@ -130,7 +130,7 @@ function showTrip(bars) {
 		$p_footer.text("PubWlkr " + copyright + " 2015");
 		$new_footer.append($p_footer);
 		$new_footer.appendTo("#container");
-	}, 1000);
+	}, 2000);
 	})
 
 	// prepend title and map
@@ -192,7 +192,7 @@ function domLoad(name, pic_url, address, price_level, rating, place_id) {
 		$p_footer.text("PubWlkr " + copyright + " 2015");
 		$new_footer.append($p_footer);
 		$new_footer.appendTo("#container");
-	}, 1000);
+	}, 2000);
 
 }
 
@@ -289,7 +289,7 @@ function regenTrip(){
 		$p_footer.text("PubWlkr " + copyright + " 2015");
 		$new_footer.append($p_footer);
 		$new_footer.appendTo("#container");
-	}, 1000);
+	}, 2000);
 }
 
 
